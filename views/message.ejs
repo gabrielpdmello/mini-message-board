@@ -1,0 +1,18 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <article class="container">
+        <span class="message-title">
+            <h1><%= message.user %></h1>
+            <span><%= message.added.toLocaleString() %></span>
+        </span>
+        <p class="message-text"><%= message.text %></p>
+        <a class="back" href="/"> Go back </a>
+    </article>
+</body>
+
+</html>
