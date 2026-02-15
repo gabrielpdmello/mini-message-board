@@ -12,11 +12,11 @@
         <% messages.forEach((message)=> { %>
         <article class="message">
             <span class="message-info">
-                <span><%= message.user %></span>
+                <span><%= message.username %></span>
                 <span><%= message.added.toLocaleString() %></span>
             </span>
             <p>
-                <%= message.text %>
+                <%= message.message %>
             </p>
                 <a class="open-message" href=<%= `/messages/${message.id}` %>>Open message</a>
         </article>

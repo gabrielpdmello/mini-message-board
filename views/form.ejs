@@ -6,18 +6,26 @@
 
 <body>
     <h1>New Message</h1>
-    <form class="container" method="POST" action="/new">
-        <span class="input-row">
-            <label for="author-name">Name: </label>
-            <input type="text" name="author-name" id="author-name" required>
-        </span>
-        <span class="input-row">
-            <label for="message-text">Message:</label>
-            <textarea name="message-text" id="message-text" required></textarea>
-        </span>
-        <button type="submit">Submit</button>
+    <div class="container">
+        <form method="POST" action="/new">
+            <span class="input-row">
+                <label for="author-name">Name: </label>
+                <input type="text" name="author-name" id="author-name" required 
+                <% if (typeof inputsError !== 'undefined') { %>
+                    value=<%= inputsError.name %>
+                <% } %>
+                >
+            </span>
+            <span class="input-row">
+                <label for="message-text">Message:</label>
+                <textarea name="message-text" id="message-text" required><% if (typeof inputsError !== 'undefined') { %><%= inputsError.message %><% } %></textarea>
+            </span>
+            <button type="submit">Submit</button>
+        </form>
+        <%- include("partials/error.ejs") %>
         <a class="back" href="/"> Go back </a>
-    </form>
+    </div>
+
 </body>
 
 </html>
