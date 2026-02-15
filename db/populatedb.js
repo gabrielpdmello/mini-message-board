@@ -23,6 +23,7 @@ async function main() {
   console.log("seeding...");
   const client = new Client({
     connectionString: `postgresql://${argv[2]}:${argv[3]}@${argv[4]}:${argv[5]}/${argv[6]}`,
+    ssl: argv[4] == 'localhost' ? false : true
   });
   await client.connect();
   await client.query(SQL);
