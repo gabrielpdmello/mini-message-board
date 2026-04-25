@@ -2,8 +2,7 @@
 
 const { Client } = require("pg");
 const { argv } = require('node:process');
-// use arguments for:
-// role, password, host, port, db
+// use arguments for connection string and ssl (optional)
 
 const SQL = `
 CREATE TABLE messages (
@@ -22,8 +21,8 @@ VALUES
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: `postgresql://${argv[2]}:${argv[3]}@${argv[4]}:${argv[5]}/${argv[6]}`,
-    ssl: argv[4] == 'localhost' ? false : true
+    connectionString: `${argv[2]}`,
+    ssl: argv[3] == 'ssl' ? true : false
   });
   await client.connect();
   await client.query(SQL);
